@@ -1,0 +1,14 @@
+<div class="container-fluid">
+	<h1 align="center">Cadastro de Uma nova pessoa no condominio</h1>
+	<form ng-app="sa_insert" ng-controller="insertCrtl">
+		<div class="form-group">
+			<label>Name</label><input type="text" name="name" ng-model="name" class="form-control" required><br/>
+            <label>Gender</label><input type="text" name="gender" ng-model="gender" class="form-control"><br/>
+			<label>Age</label><input type="text" name="age" maxlength="2" ng-model="age" class="form-control" required><br/>
+            <label>Email</label><input type="text" name="email" ng-model="email" class="form-control" required><br/>
+            <label>Phone</label><input type="text" name="phone" ng-model="phone" class="form-control" required><br/>
+            <label>Organization</label><input type="text" name="organization" ng-model="organization" class="form-control"><br/>
+			<input type="submit" name="insert" class="btn btn-success" ng-click="insert()" value="Insert">
+		</div>
+	</form>
+</div>
