@@ -21,6 +21,8 @@ insert.controller('insertCrtl', ['$scope', '$http', ($scope, $http) => {
             $scope.organization = null;
 
             window.location.href = '/';
+        }).error((response) => {
+            alert(response);
         });
     }
 }]);

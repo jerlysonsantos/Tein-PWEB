@@ -68,6 +68,7 @@ select.controller('controller', ['$scope', '$http', '$timeout', ($scope, $http, 
         if (confirm("Voc\u00EA quer realmente excluir?")) {
             $http.get(`clients/destroy/${id}`)
             .success((response) => {
+                alert(response);
                 $http.get('clients/index').success((user_data) => {
                         $scope.file = user_data;
                         $scope.current_grid = 1;

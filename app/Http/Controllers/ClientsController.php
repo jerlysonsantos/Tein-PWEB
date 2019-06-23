@@ -37,6 +37,16 @@ class ClientsController extends Controller
     public function store(Request $request)
     {
         try {
+            $exist = Clients::where('email', '=' , $request->email)->first();
+            if ($exist !== null) {
+                return response('Cliente Já cadastrado', 400);
+            }
+
+            $exist = Clients::where('phone', '=' , $request->phone)->first();
+            if ($exist !== null) {
+                return response('Telefone Já cadastrado', 400);
+            }
+
             $clients = new Clients;
             $clients->name = $request->name;
             $clients->gender = $request->gender;
@@ -45,7 +55,7 @@ class ClientsController extends Controller
             $clients->phone = $request->phone;
             $clients->organization = $request->organization;
             $clients->save();
-            return redirect()->route('/');
+            return response('Registrado com Sucesso!', 200);
         } catch (\Throwable $th) {
             return $th;
         }
@@ -90,7 +100,7 @@ class ClientsController extends Controller
         $clients->phone = $request->phone;
         $clients->organization = $request->organization;
         $clients->save();
-        return redirect()->route('clients.index')->with('message', 'Cliente atualizado com sucesso');
+        return response('Atualizado com Sucesso!', 200);
     }
 
     /**
@@ -103,6 +113,6 @@ class ClientsController extends Controller
     {
         $clients = Clients::findOrFail($id);
         $clients->delete($id);
-        return redirect()->route('clients/index')->with('message','Cliente Apagado');
+        return response('Cliente Apagado!', 200);
     }
 }
