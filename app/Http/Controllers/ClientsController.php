@@ -36,15 +36,19 @@ class ClientsController extends Controller
      */
     public function store(Request $request)
     {
-        $clients = new Clients;
-        $clients->name = $request->name;
-        $clients->gender = $request->gender;
-        $clients->age = $request->age;
-        $clients->email = $request->email;
-        $clients->phone = $request->phone;
-        $clients->organization = $request->organization;
-        $clients->save();
-        return redirect()->route('clients/index')->with('message', 'Cliente cadastrado com sucesso');
+        try {
+            $clients = new Clients;
+            $clients->name = $request->name;
+            $clients->gender = $request->gender;
+            $clients->age = $request->age;
+            $clients->email = $request->email;
+            $clients->phone = $request->phone;
+            $clients->organization = $request->organization;
+            $clients->save();
+            return redirect()->route('/');
+        } catch (\Throwable $th) {
+            return $th;
+        }
     }
 
     /**
@@ -99,6 +103,6 @@ class ClientsController extends Controller
     {
         $clients = Clients::findOrFail($id);
         $clients->delete($id);
-        return redirect()->route('clients.index')->with('message','Cliente Apagado');
+        return redirect()->route('clients/index')->with('message','Cliente Apagado');
     }
 }

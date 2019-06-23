@@ -17,3 +17,5 @@ Route::get('/', function () {
 
 Route::get('clients/index', 'ClientsController@index');
 Route::post('clients/insert', 'ClientsController@store');
+Route::get('clients/destroy/{id}', 'ClientsController@destroy');
+

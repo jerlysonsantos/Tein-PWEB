@@ -4,8 +4,11 @@ insert.controller('insertCrtl', ['$scope', '$http', ($scope, $http) => {
     $scope.insert = () => {
         const data = {
             name: $scope.name,
-            email: $scope.email,
+            gender: $scope.gender,
             age: $scope.age,
+            email: $scope.email,
+            phone: $scope.phone,
+            organization: $scope.organization,
         };
         $http.post(
         "clients/insert", data).success((data) => {
@@ -13,7 +16,11 @@ insert.controller('insertCrtl', ['$scope', '$http', ($scope, $http) => {
             $scope.name = null;
             $scope.email = null;
             $scope.age = null;
-            window.location.href = '/iot/';
+            $scope.gender = null;
+            $scope.phone = null;
+            $scope.organization = null;
+
+            window.location.href = '/';
         });
     }
 }]);

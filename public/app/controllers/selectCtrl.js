@@ -66,12 +66,9 @@ select.controller('controller', ['$scope', '$http', '$timeout', ($scope, $http, 
 
     $scope.delete_data = (id) => {
         if (confirm("Voc\u00EA quer realmente excluir?")) {
-            $http.post("php/delete.php", {
-                    'id': id
-            })
+            $http.get(`clients/destroy/${id}`)
             .success((response) => {
-                console.log(response);
-                $http.get('php/select.php').success((user_data) => {
+                $http.get('clients/index').success((user_data) => {
                         $scope.file = user_data;
                         $scope.current_grid = 1;
                         $scope.data_limit = 10;
