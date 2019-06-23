@@ -10,14 +10,13 @@ app.config(['$routeProvider', '$locationProvider', ($routeProvider, $locationPro
 
   $routeProvider
     .when('/', {
-      templateUrl: 'views/home.html',
+      templateUrl: 'app/views/home.html',
       controller: 'MainCtrl',
     })
     .otherwise({ redirectTo: '/' });
 }]);
-  
+
 app.controller('MainCtrl', ['$rootScope', '$location', ($rootScope, $location) => {
-  // eslint-disable-next-line no-param-reassign
   $rootScope.activetab = $location.path();
 }]);
 

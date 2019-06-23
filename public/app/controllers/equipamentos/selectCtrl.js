@@ -9,7 +9,7 @@ select.filter('beginning_data', () => {
          }
 });
 select.controller('controller', ['$scope', '$http', '$timeout', ($scope, $http, $timeout) => {
-     $http.get('clients/index')
+     $http.get('equips/index')
      .success((user_data) => {
           $scope.file = user_data.data;
           $scope.current_grid = 1;
@@ -35,7 +35,7 @@ select.controller('controller', ['$scope', '$http', '$timeout', ($scope, $http, 
      };
 
     $scope.show_data = () => {
-        $http.get("clients/index")
+        $http.get("equips/index")
             .success((user_data) => {
                 $scope.names = user_data.data;
             });
@@ -43,15 +43,12 @@ select.controller('controller', ['$scope', '$http', '$timeout', ($scope, $http, 
 
    $scope.update_data = (id, name, gender, age, email, phone, organization) => {
         const dados = {
-            name: name,
-            gender: gender,
-            age: age,
-            email: email,
-            phone: phone,
-            organization: organization,
+            name,
+            type,
+            location,
         };
 
-        $http.post(`clients/update/${id}`, dados)
+        $http.post(`equips/update/${id}`, dados)
             .success((data) => {
                 alert(data);
                 $scope.show_data();
@@ -62,10 +59,10 @@ select.controller('controller', ['$scope', '$http', '$timeout', ($scope, $http, 
 
     $scope.delete_data = (id) => {
         if (confirm("Voc\u00EA quer realmente excluir?")) {
-            $http.get(`clients/destroy/${id}`)
+            $http.get(`equips/destroy/${id}`)
             .success((response) => {
                 alert(response);
-                $http.get('clients/index').success((user_data) => {
+                $http.get('equips/index').success((user_data) => {
                         $scope.file = user_data;
                         $scope.current_grid = 1;
                         $scope.data_limit = 10;

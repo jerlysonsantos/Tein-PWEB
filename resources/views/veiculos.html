@@ -16,7 +16,7 @@
     <div ng-app="select" ng-controller="controller">
         <div class="container">
             <br/>
-            <h3 align="center">Cadastro de Clientes</a></h3>
+            <h3 align="center">Cadastro de Veiculos</a></h3>
             <br/>
             <div class="row">
                 <div class="col-sm-6 pull-left">
@@ -38,7 +38,7 @@
                                     </button>
                                     </div>
                                     <div class="modal-body">
-                                        <div ng-include src="'views/insere.html'"></div>
+                                        <div ng-include src="'views/insereVehicles.html'"></div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -64,23 +64,19 @@
                     <table class="table table-striped table-bordered">
                         <thead>
                             <th>id</th>
-                            <th>Nome&nbsp;<a ng-click="sort_with('name');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                            <th>G&ecirc;nero&nbsp;<a ng-click="sort_with('gender');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                            <th>Idade&nbsp;<a ng-click="sort_with('age');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                            <th>Email&nbsp;<a ng-click="sort_with('email');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                            <th>Telefone&nbsp;<a ng-click="sort_with('phone');"><i class="glyphicon glyphicon-sort"></i></a></th>
-                            <th>Organiza&ccedil;&atilde;o&nbsp;<a ng-click="sort_with('organization');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                            <th>Marca&nbsp;<a ng-click="sort_with('mark');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                            <th>Modelo&nbsp;<a ng-click="sort_with('model');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                            <th>Placa&nbsp;<a ng-click="sort_with('licensePlate');"><i class="glyphicon glyphicon-sort"></i></a></th>
+                            <th>Dono do Carro&nbsp;<a ng-click="sort_with('carOwnName');"><i class="glyphicon glyphicon-sort"></i></a></th>
                             <th colspan=2>&nbsp;</th>
                            </thead>
                         <tbody>
                             <tr ng-repeat="data in searched = (file | filter:search | orderBy : base :reverse) | beginning_data:(current_grid-1)*data_limit | limitTo:data_limit">
                                 <td>{{data.id}}</td>
-                                <td><input type="text" class="form-control" style="border:0;" value="{{data.name}}"/></td>
-                                <td><input type="text" class="form-control" style="border:0;" value="{{data.gender}}"/></td>
-                                <td><input type="text" class="form-control" style="border:0;" value="{{data.age}}"/></td>
-                                <td><input type="text" class="form-control" style="border:0;" value="{{data.email}}"/></td>
-                                <td><input type="text" class="form-control" style="border:0;" value="{{data.phone}}"/></td>
-                                <td><input type="text" class="form-control" style="border:0;" value="{{data.organization}}"/></td>
+                                <td><input type="text" class="form-control" style="border:0;" value="{{data.mark}}"/></td>
+                                <td><input type="text" class="form-control" style="border:0;" value="{{data.model}}"/></td>
+                                <td><input type="text" class="form-control" style="border:0;" value="{{data.licensePlate}}"/></td>
+                                <td><input type="text" class="form-control" style="border:0;" value="{{data.carOwnName}}"/></td>
                                 <td>
                                   <button class="btn btn-success btn-xs" ng-click="update_data(data.id)">
                                        <span class="glyphicon glyphicon-edit"></span> Editar
@@ -112,6 +108,6 @@
         </div>
     </div>
 </body>
-    <script type="text/javascript" src="app/controllers/selectCtrl.js"></script>
-    <script type="text/javascript" src="app/controllers/insertCtrl.js"></script>
+    <script type="text/javascript" src="app/controllers/veiculos/selectCtrl.js"></script>
+    <script type="text/javascript" src="app/controllers/veiculos/insertCtrl.js"></script>
 </html>
