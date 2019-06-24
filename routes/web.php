@@ -21,6 +21,9 @@ Route::get('/equipamentos', function () {
 Route::get('/veiculos', function () {
     return view('veiculos');
 });
+Route::get('/clientes', function () {
+    return view('clientes');
+});
 
 Route::name('clientes')->group(function () {
     Route::get('clients/index', 'ClientsController@index');
