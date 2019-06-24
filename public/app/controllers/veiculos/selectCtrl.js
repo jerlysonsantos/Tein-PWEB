@@ -25,6 +25,11 @@ select.controller('controller', ['$scope', '$http', '$timeout', ($scope, $http, 
           $scope.show_data();
      });
 
+     $http.get('clients/index')
+     .success((client) => {
+          $scope.clients = client.data;
+     });
+
      $scope.page_position = (page_number) => {
           $scope.current_grid = page_number;
      };
@@ -47,12 +52,12 @@ select.controller('controller', ['$scope', '$http', '$timeout', ($scope, $http, 
             });
     };
 
-   $scope.update_data = (id, name, gender, age, email, phone, organization) => {
+   $scope.update_data = (id) => {
         const dados = {
-            mark,
-            model,
-            licensePlate,
-            carOwnName,
+            mark: $(`#${id} :input`).eq(0).val(),
+            model: $(`#${id} :input`).eq(1).val(),
+            licensePlate: $(`#${id} :input`).eq(2).val(),
+            carOwnName: $(`#${id} select`).eq(0).val(),
         };
 
         $http.post(`vehicles/update/${id}`, dados)
@@ -70,7 +75,7 @@ select.controller('controller', ['$scope', '$http', '$timeout', ($scope, $http, 
             .success((response) => {
                 alert(response);
                 $http.get('vehicles/index').success((user_data) => {
-                        $scope.file = user_data;
+                        $scope.file = user_data.data;
                         $scope.current_grid = 1;
                         $scope.data_limit = 10;
                         $scope.filter_data = $scope.file.length;

@@ -45,11 +45,11 @@ select.controller('controller', ['$scope', '$http', '$timeout', ($scope, $http, 
             });
     };
 
-   $scope.update_data = (id, name, gender, age, email, phone, organization) => {
+   $scope.update_data = (id) => {
         const dados = {
-            name,
-            type,
-            location,
+            name: $(`#${id} :input`).eq(0).val(),
+            type: $(`#${id} :input`).eq(1).val(),
+            location: $(`#${id} :input`).eq(2).val(),
         };
 
         $http.post(`equips/update/${id}`, dados)
@@ -67,7 +67,7 @@ select.controller('controller', ['$scope', '$http', '$timeout', ($scope, $http, 
             .success((response) => {
                 alert(response);
                 $http.get('equips/index').success((user_data) => {
-                        $scope.file = user_data;
+                        $scope.file = user_data.data;
                         $scope.current_grid = 1;
                         $scope.data_limit = 10;
                         $scope.filter_data = $scope.file.length;

@@ -1,11 +1,14 @@
 <div class="container-fluid">
-	<h1 align="center">Cadastro de Um nove Veiculo</h1>
+	<h1 align="center">Cadastro de Um Novo Veiculo</h1>
 	<form ng-app="sa_insert" ng-controller="insertCrtl" ng-submit="insert()">
 		<div class="form-group">
                 <label>Mark</label><input type="text" name="mark" ng-model="mark" class="form-control" required><br/>
                 <label>Model</label><input type="text" name="model" ng-model="model" class="form-control" required><br/>
-                <label>LicensePlate</label><input type="text" name="licensePlate" ng-model="licensePlate" class="form-control" required><br/>
-                <label>CarOwnName</label><input type="text" name="carOwnName" ng-model="carOwnName" class="form-control" required><br/>
+                <label>LicensePlate</label><input type="text" name="licensePlate" ng-model="licensePlate" class="form-control" placeholder="XXXX-XXXX" required><br/>
+                <label>CarOwnName</label><select list="carOwnName" autocomplete="on" name="carOwnName" ng-model="carOwnName" class="form-control" required>
+                        <option ng-repeat="data in clients" value="<% data.name %>"><% data.name %></option>
+                    </select>
+                    <br/>
                 <input type="submit" name="insert" class="btn btn-success" value="Insert">
 		</div>
 	</form>

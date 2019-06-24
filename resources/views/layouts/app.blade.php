@@ -16,6 +16,11 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.js"></script>
+
 </head>
 <body>
     <div id="app">
@@ -33,11 +38,11 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
+                            <li id="login" class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
-                                <li class="nav-item">
+                                <li id="register" class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
@@ -45,13 +50,13 @@
 
                             <div class="collapse navbar-collapse" id="navbarNav">
                                 <ul class="navbar-nav">
-                                    <li class="nav-item">
+                                    <li id="clientes" class="nav-item">
                                         <a class="nav-link" href="/">Clientes</a>
                                     </li>
-                                    <li class="nav-item">
+                                    <li id="equipamentos" class="nav-item">
                                         <a class="nav-link" href="/equipamentos">Equipamentos</a>
                                     </li>
-                                    <li class="nav-item">
+                                    <li id="veiculos" class="nav-item">
                                         <a class="nav-link" href="/veiculos">Veiculos</a>
                                     </li>
                                 </ul>
@@ -89,5 +94,25 @@
         </main>
     </div>
 </body>
+<script>
+    const pathname = window.location.pathname;
+    if (pathname === '/') {
+        $('#clientes').addClass('active');
+    }
+    if (pathname === '/equipamentos') {
+        $('#equipamentos').addClass('active');
+    }
+    if (pathname === '/veiculos') {
+        $('#veiculos').addClass('active');
+    }
 
+
+    if (pathname === '/login') {
+        $('#login').addClass('active');
+    }
+    if (pathname === '/register') {
+        $('#register').addClass('active');
+    }
+
+</script>
 </html>

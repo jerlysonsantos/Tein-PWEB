@@ -2,10 +2,6 @@
 
 @section('content')
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
@@ -67,12 +63,12 @@
                             <th colspan=2>&nbsp;</th>
                            </thead>
                         <tbody>
-                            <tr ng-repeat="data in searched = (file | filter:search | orderBy : base :reverse) | beginning_data:(current_grid-1)*data_limit | limitTo:data_limit">
-                                <td><%data.id%></td>
-                                <td><input type="text" class="form-control" style="border:0;" value="<%data.mark%>"/></td>
-                                <td><input type="text" class="form-control" style="border:0;" value="<%data.model%>"/></td>
-                                <td><input type="text" class="form-control" style="border:0;" value="<%data.licensePlate%>"/></td>
-                                <td><input type="text" class="form-control" style="border:0;" value="<%data.carOwnName%>"/></td>
+                            <tr ng-repeat="data in searched = (file | filter:search | orderBy : base :reverse) | beginning_data:(current_grid-1)*data_limit | limitTo:data_limit" id="<% data.id %>">
+                                <td><% data.id %></td>
+                                <td><input type="text" class="form-control" style="border:0;" value="<% data.mark %>"/></td>
+                                <td><input type="text" class="form-control" style="border:0;" value="<% data.model %>"/></td>
+                                <td><input type="text" class="form-control" style="border:0;" value="<% data.licensePlate %>"/></td>
+                                <td><input type="text" list="list" class="form-control" style="border:0;" value="<% data.carOwnName %>"></td>
                                 <td>
                                   <button class="btn btn-success btn-xs" ng-click="update_data(data.id)">
                                        <span class="glyphicon glyphicon-edit"></span> Editar
@@ -102,6 +98,11 @@
                 </div>
             </div>
         </div>
+        <datalist id="list">
+            <select>
+                <option ng-repeat="x in clients" value="<% x.name %>"><% x.name %></option>
+            </select>
+        </datalist>
     </div>
     <script type="text/javascript" src="app/controllers/veiculos/selectCtrl.js"></script>
     <script type="text/javascript" src="app/controllers/veiculos/insertCtrl.js"></script>

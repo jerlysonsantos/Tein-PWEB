@@ -48,22 +48,20 @@ select.controller('controller', ['$scope', '$http', '$timeout', ($scope, $http, 
             });
     };
 
-   $scope.update_data = (id, name, gender, age, email, phone, organization) => {
+   $scope.update_data = (id) => {
         const dados = {
-            name: name,
-            gender: gender,
-            age: age,
-            email: email,
-            phone: phone,
-            organization: organization,
+            name: $(`#${id} :input`).eq(0).val(),
+            gender: $(`#${id} :input`).eq(1).val(),
+            age: $(`#${id} :input`).eq(2).val(),
+            email: $(`#${id} :input`).eq(3).val(),
+            phone: $(`#${id} :input`).eq(4).val(),
+            organization: $(`#${id} :input`).eq(5).val(),
         };
-
         $http.post(`clients/update/${id}`, dados)
             .success((data) => {
                 alert(data);
                 $scope.show_data();
         });
-
     }
 
 
@@ -73,7 +71,7 @@ select.controller('controller', ['$scope', '$http', '$timeout', ($scope, $http, 
             .success((response) => {
                 alert(response);
                 $http.get('clients/index').success((user_data) => {
-                        $scope.file = user_data;
+                        $scope.file = user_data.data;
                         $scope.current_grid = 1;
                         $scope.data_limit = 10;
                         $scope.filter_data = $scope.file.length;
