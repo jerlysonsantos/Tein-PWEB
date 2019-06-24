@@ -39,8 +39,34 @@ CREATE TABLE `equips` (
 
 LOCK TABLES `equips` WRITE;
 /*!40000 ALTER TABLE `equips` DISABLE KEYS */;
-INSERT INTO `equips` VALUES (1,'AlfaSensor','Sensor de calor','Cozinha','2019-06-23 19:55:34','2019-06-23 19:55:34'),(2,'BetaSensor','Sensor de Aproximação','Area','2019-06-24 05:50:20','2019-06-24 05:50:20');
+INSERT INTO `equips` VALUES (1,'AlfaSensor','Sensor de Calor','Cozinha','2019-06-24 16:34:04','2019-06-24 19:34:04'),(2,'BetaSensor','Sensor de Aproximação','Area','2019-06-24 05:50:20','2019-06-24 05:50:20');
 /*!40000 ALTER TABLE `equips` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `password_resets`
+--
+
+DROP TABLE IF EXISTS `password_resets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `password_resets` (
+  `email` varchar(50) NOT NULL,
+  `token` varchar(60) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE KEY `email` (`email`),
+  KEY `fk_email` (`email`),
+  CONSTRAINT `fk_email` FOREIGN KEY (`email`) REFERENCES `users` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+LOCK TABLES `password_resets` WRITE;
+/*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
+/*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -72,7 +98,7 @@ CREATE TABLE `tblclientes` (
 
 LOCK TABLES `tblclientes` WRITE;
 /*!40000 ALTER TABLE `tblclientes` DISABLE KEYS */;
-INSERT INTO `tblclientes` VALUES (1,'Jerlyson','male',15,'aaaa@gmail.com','888888888','duckdevs','2019-06-23 03:58:55','2019-06-23 03:58:55'),(3,'Laura',NULL,24,'laurinha@gmail.com',NULL,NULL,'2019-06-23 06:13:26','2019-06-23 06:13:26'),(4,'Gay','Male',45,'sdasdasd@gmail.com','46548947685','Duckdev','2019-06-23 06:16:35','2019-06-23 06:16:35'),(5,'Henrique','Male',22,'henrique@gmail.com','454545454','Duckdev','2019-06-23 06:18:51','2019-06-23 06:18:51'),(6,'Daniel','Male',27,'dan@gmail.com','484156489','Duckdev','2019-06-23 06:21:01','2019-06-23 06:21:01'),(8,'EloUp','Female',32,'ssss@gmail.com','9999999999','Duckdev','2019-06-23 06:22:43','2019-06-23 06:22:43'),(9,'Jerlyson','Female',32,'open_dxlqwte_user@tfbnw.net','8888888','Duckdev','2019-06-23 06:25:02','2019-06-23 06:25:02'),(10,'Pessoa','Male',14,'hhhh@gmail.com','887458456','NiggaNigga','2019-06-23 17:44:10','2019-06-23 17:44:10');
+INSERT INTO `tblclientes` VALUES (1,'Jerlyson','male',15,'aaaa@gmail.com','888888888','duckdevs','2019-06-23 03:58:55','2019-06-23 03:58:55'),(3,'Laura','Female',24,'laurinha@gmail.com','333333333','Comando','2019-06-24 19:35:47','2019-06-23 06:13:26'),(4,'Gay','Male',45,'sdasdasd@gmail.com','46548947685','Duckdev','2019-06-23 06:16:35','2019-06-23 06:16:35'),(5,'Henrique','Male',22,'henrique@gmail.com','454545454','Duckdev','2019-06-23 06:18:51','2019-06-23 06:18:51'),(6,'Daniel','Male',27,'dan@gmail.com','484156489','Duckdev','2019-06-23 06:21:01','2019-06-23 06:21:01'),(8,'EloUp','Female',32,'ssss@gmail.com','9999999999','Duckdev','2019-06-23 06:22:43','2019-06-23 06:22:43'),(10,'Pessoa','Male',14,'hhhh@gmail.com','887458456','NiggaNigga','2019-06-23 17:44:10','2019-06-23 17:44:10');
 /*!40000 ALTER TABLE `tblclientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,10 +147,8 @@ CREATE TABLE `vehicles` (
   `carOwnName` varchar(30) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `FK_PersonOrder`
-  FOREIGN KEY (`carOwnName`) REFERENCES tblclientes(`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -133,7 +157,7 @@ CREATE TABLE `vehicles` (
 
 LOCK TABLES `vehicles` WRITE;
 /*!40000 ALTER TABLE `vehicles` DISABLE KEYS */;
-INSERT INTO `vehicles` VALUES (1,'Ford','Mustang','XXX-XXX','Jerlyson','2019-06-23 21:03:47','2019-06-23 21:03:47');
+INSERT INTO `vehicles` VALUES (1,'Ford','Mustang','6666-VVVV','Jerlyson','2019-06-24 15:13:30','2019-06-24 18:13:30'),(2,'Ford','Focus','7777-SKSK','Gay','2019-06-24 18:33:18','2019-06-24 18:33:18'),(3,'Fiat','Punto','5555-OOOO','Laura','2019-06-24 19:36:23','2019-06-24 19:36:23');
 /*!40000 ALTER TABLE `vehicles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -146,4 +170,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-06-24  0:00:46
+-- Dump completed on 2019-06-24 13:40:21
