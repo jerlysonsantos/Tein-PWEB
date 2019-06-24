@@ -2,6 +2,9 @@ const app = angular.module('app', ['select',
   'sa_insert',
   'ngRoute']);
 
+
+
+
 app.config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) => {
   $locationProvider.html5Mode({
     enabled: true,

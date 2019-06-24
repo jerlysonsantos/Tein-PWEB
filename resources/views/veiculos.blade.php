@@ -1,9 +1,6 @@
-<!doctype html>
-<html>
-<head>
-    <meta charset="iso-8859-1">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Pr&eacutedios Inteligentes</title>
+@extends('layouts.app')
+
+@section('content')
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -11,9 +8,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-</head>
-<body>
-    <div ng-app="select" ng-controller="controller">
+
+<div ng-app="select" ng-controller="controller">
         <div class="container">
             <br/>
             <h3 align="center">Cadastro de Veiculos</a></h3>
@@ -72,11 +68,11 @@
                            </thead>
                         <tbody>
                             <tr ng-repeat="data in searched = (file | filter:search | orderBy : base :reverse) | beginning_data:(current_grid-1)*data_limit | limitTo:data_limit">
-                                <td>{{data.id}}</td>
-                                <td><input type="text" class="form-control" style="border:0;" value="{{data.mark}}"/></td>
-                                <td><input type="text" class="form-control" style="border:0;" value="{{data.model}}"/></td>
-                                <td><input type="text" class="form-control" style="border:0;" value="{{data.licensePlate}}"/></td>
-                                <td><input type="text" class="form-control" style="border:0;" value="{{data.carOwnName}}"/></td>
+                                <td><%data.id%></td>
+                                <td><input type="text" class="form-control" style="border:0;" value="<%data.mark%>"/></td>
+                                <td><input type="text" class="form-control" style="border:0;" value="<%data.model%>"/></td>
+                                <td><input type="text" class="form-control" style="border:0;" value="<%data.licensePlate%>"/></td>
+                                <td><input type="text" class="form-control" style="border:0;" value="<%data.carOwnName%>"/></td>
                                 <td>
                                   <button class="btn btn-success btn-xs" ng-click="update_data(data.id)">
                                        <span class="glyphicon glyphicon-edit"></span> Editar
@@ -98,7 +94,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="col-md-6 pull-left">
-                        <h5>Mostrando {{ searched.length }} de {{ entire_user}} registros</h5>
+                        <h5>Mostrando <% searched.length %> de <% entire_user%> registros</h5>
                     </div>
                     <div class="col-md-6" ng-show="filter_data > 0">
                         <div pagination="" page="current_grid" on-select-page="page_position(page)" boundary-links="true" total-items="filter_data" items-per-page="data_limit" class="pagination-small pull-right" previous-text="&laquo;" next-text="&raquo;" first-text="Primeiro" last-text="&Uacute;ltimo"></div>
@@ -107,7 +103,6 @@
             </div>
         </div>
     </div>
-</body>
     <script type="text/javascript" src="app/controllers/veiculos/selectCtrl.js"></script>
     <script type="text/javascript" src="app/controllers/veiculos/insertCtrl.js"></script>
-</html>
+@endsection

@@ -8,6 +8,10 @@ select.filter('beginning_data', () => {
             return [];
          }
 });
+select.config(($interpolateProvider) => {
+    $interpolateProvider.startSymbol('<%');
+    $interpolateProvider.endSymbol('%>');
+});
 select.controller('controller', ['$scope', '$http', '$timeout', ($scope, $http, $timeout) => {
      $http.get('equips/index')
      .success((user_data) => {

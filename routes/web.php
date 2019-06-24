@@ -11,17 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-Route::get('/equipamentos', function () {
-    return view('equipamentos');
-});
-
-Route::get('/veiculos', function () {
-    return view('veiculos');
-});
-
 Route::name('clientes')->group(function () {
     Route::get('clients/index', 'ClientsController@index');
     Route::post('clients/insert', 'ClientsController@store');
@@ -44,3 +33,14 @@ Route::name('veiculos')->group(function () {
 });
 
 
+
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/equipamentos', function () {
+    return view('equipamentos');
+})->middleware('auth');
+
+Route::get('/veiculos', function () {
+    return view('veiculos');
+})->middleware('auth');

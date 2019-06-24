@@ -1,4 +1,5 @@
 const select = angular.module('select', ['ui.bootstrap', 'sa_insert']);
+
 select.filter('beginning_data', () => {
         return (input, begin) => {
             if (input) {
@@ -8,6 +9,12 @@ select.filter('beginning_data', () => {
             return [];
          }
 });
+
+select.config(($interpolateProvider) => {
+    $interpolateProvider.startSymbol('<%');
+    $interpolateProvider.endSymbol('%>');
+});
+
 select.controller('controller', ['$scope', '$http', '$timeout', ($scope, $http, $timeout) => {
      $http.get('clients/index')
      .success((user_data) => {
