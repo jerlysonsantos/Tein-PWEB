@@ -57,7 +57,7 @@ select.controller('controller', ['$scope', '$http', '$timeout', ($scope, $http, 
             mark: $(`#${id} :input`).eq(0).val(),
             model: $(`#${id} :input`).eq(1).val(),
             licensePlate: $(`#${id} :input`).eq(2).val(),
-            carOwnName: $(`#${id} select`).eq(0).val(),
+            carOwnName: $(`#${id} :input`).eq(3).val(),
         };
 
         $http.post(`vehicles/update/${id}`, dados)
