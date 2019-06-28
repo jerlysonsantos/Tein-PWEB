@@ -37,6 +37,9 @@ Route::name('veiculos')->group(function () {
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/clientes', function () {
+    return view('clientes');
+})->middleware('auth');
 Route::get('/equipamentos', function () {
     return view('equipamentos');
 })->middleware('auth');

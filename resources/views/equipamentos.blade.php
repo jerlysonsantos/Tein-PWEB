@@ -88,7 +88,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="col-md-6 pull-left">
-                        <h5>Mostrando <% searched.length %> de <%entire_user%> registros</h5>
+                        <h5>Mostrando <% searched.length %> de <% entire_user %> registros</h5>
                     </div>
                     <div class="col-md-6" ng-show="filter_data > 0">
                         <div pagination="" page="current_grid" on-select-page="page_position(page)" boundary-links="true" total-items="filter_data" items-per-page="data_limit" class="pagination-small pull-right" previous-text="&laquo;" next-text="&raquo;" first-text="Primeiro" last-text="&Uacute;ltimo"></div>

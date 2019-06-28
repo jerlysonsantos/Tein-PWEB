@@ -35,7 +35,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto navbar-right">
                         <!-- Authentication Links -->
                         @guest
                             <li id="login" class="nav-item">
@@ -49,9 +49,9 @@
                         @else
 
                             <div class="collapse navbar-collapse" id="navbarNav">
-                                <ul class="navbar-nav">
+                                <ul class="navbar-nav navbar-right">
                                     <li id="clientes" class="nav-item">
-                                        <a class="nav-link" href="/">Clientes</a>
+                                        <a class="nav-link" href="/clientes">Clientes</a>
                                     </li>
                                     <li id="equipamentos" class="nav-item">
                                         <a class="nav-link" href="/equipamentos">Equipamentos</a>
@@ -63,7 +63,7 @@
                             </div>
 
 
-                            <li class="nav-item  dropdown">
+                            <li class="nav-item dropdown">
 
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} </span>
@@ -96,7 +96,7 @@
 </body>
 <script>
     const pathname = window.location.pathname;
-    if (pathname === '/') {
+    if (pathname === '/clientes') {
         $('#clientes').addClass('active');
     }
     if (pathname === '/equipamentos') {
